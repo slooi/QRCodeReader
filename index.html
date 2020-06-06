@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>QRCodeReader</title>
+        <style>
+            html{
+                background-color: rgb(71, 71, 71);
+            }
+            #instructions{
+                background-color:rgb(240, 240, 240);
+                border: 3px dashed black;
+                padding:1rem;
+            }
+            #content{
+                font-size: 5px;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="instructions">
+            <h1>Paste an image to scan for QR code</h1>
+            <p>Tip: If scan doesn't work, try cropping everything but the QR code and upscaling the image</p>
+            <h2>QR Code:<br/><span id="qrcode"></span></h2>
+        </div>
+        <br>
+        <div id="content"></div>
+        <script src="jsQR.js"></script>
+        <script src="main.js"></script>
+    </body>
+
+
+</html>
