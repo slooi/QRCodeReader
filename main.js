@@ -6,6 +6,7 @@ console.log('main.js loaded')
 // if (code) {
 //   console.log("Found QR code", code);
 // }
+const status = document.getElementById('status')
 
 
 const reader = new FileReader()
@@ -46,7 +47,9 @@ window.addEventListener('paste',e=>{
         reader.readAsDataURL(e.clipboardData.files[0])
     }
     catch(e){
-        alert('ERROR: try pasting an image')
+        
+        statusText('ERROR: try pasting an image',0)
+        // alert('ERROR: try pasting an image')
     }
 })
 
@@ -59,7 +62,34 @@ function getCode(data,width, height){
     if (code) {
         console.log("Found QR code", code);
         qrcode.innerText = code.data
+        statusText('QR code found',1)
     }else{
-        alert('No QR code found')
+        statusText('No QR code found',0)
+
+        // alert('No QR code found')
+        qrcode.innerText = ''
     }
+}
+
+function statusText(text,foundQRCode){
+    status.innerText = text
+    timer = 0
+    worked = foundQRCode
+}
+
+var worked = 0
+var timer = 180
+tick()
+function tick(){
+    console.log(timer)
+    if(timer<180){
+        timer+=5
+    }
+    const val = timer/180
+    if(worked){
+        status.style['background-color'] = 'rgba(157, 255, 157,'+val+')'
+    }else{
+        status.style['background-color'] = 'rgba(255, 177, 177,'+val+')'
+    }
+    requestAnimationFrame(tick)
 }
