@@ -48,7 +48,7 @@ window.addEventListener('paste',e=>{
     }
     catch(e){
         
-        statusText('Only images can be scanned. Not text.',0)
+        statusText('ERROR: Only images can be scanned. Not text.',0)
         // alert('ERROR: try pasting an image')
     }
 })
